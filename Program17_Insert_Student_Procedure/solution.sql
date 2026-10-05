@@ -1,5 +1,22 @@
 USE CollegeDB;
 
+CREATE TABLE IF NOT EXISTS Department (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(50) NOT NULL
+);
+
+INSERT IGNORE INTO Department VALUES
+(1, 'Computer Science'),
+(2, 'Commerce');
+
+CREATE TABLE IF NOT EXISTS Student (
+    StudentID INT PRIMARY KEY,
+    StudentName VARCHAR(50) NOT NULL,
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID)
+        REFERENCES Department(DepartmentID)
+);
+
 DROP PROCEDURE IF EXISTS InsertStudent;
 
 DELIMITER //
