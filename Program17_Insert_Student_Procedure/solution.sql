@@ -1,22 +1,23 @@
+USE CollegeDB;
+
+DROP PROCEDURE IF EXISTS InsertStudent;
+
 DELIMITER //
 
 CREATE PROCEDURE InsertStudent(
-IN p_StudentID INT,
-IN p_StudentName VARCHAR(100),
-IN p_Marks INT,
-IN p_DepartmentID INT
+    IN p_student_id INT,
+    IN p_student_name VARCHAR(50),
+    IN p_department_id INT
 )
 BEGIN
-INSERT INTO Student
-VALUES (
-p_StudentID,
-p_StudentName,
-p_Marks,
-p_DepartmentID
-);
+    INSERT INTO Student
+        (StudentID, StudentName, DepartmentID)
+    VALUES
+        (p_student_id, p_student_name, p_department_id);
 END //
 
 DELIMITER ;
-CALL InsertStudent(105, 'Karthik', 78, 1);
+
+CALL InsertStudent(105, 'Kavin', 1);
 
 SELECT * FROM Student;
